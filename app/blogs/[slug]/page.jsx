@@ -12,7 +12,7 @@ export default function page() {
           <div className="max-w-[70%] space-y-3">
             <h2 className="text-2xl font-bold">
               Another Storm to Form in the Bay of Bengal This Weekend&#39; Just
-              a Week After Cyclone Midhili’s Rampage!
+              a Week After Cyclone Midhili&apos;s Rampage!
             </h2>
             <p className="bg-slate-100 rounded-md w-fit px-2">4 hours ago</p>
             <Image
