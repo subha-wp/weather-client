@@ -4,10 +4,12 @@ import React from "react";
 import cities from "../lib/city.list.json";
 import { IoSearchOutline } from "react-icons/io5";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function SearchComp() {
   const [query, setQuery] = React.useState("");
   const [results, setResults] = React.useState([]);
+  const router = useRouter();
 
   const onChange = (e) => {
     const { value } = e.target;
@@ -38,6 +40,11 @@ export default function SearchComp() {
     return setResults(matchingCities);
   };
 
+  const handleRoute = (slug) => {
+    setQuery("");
+    router.push(`/weather/${slug}`);
+  };
+
   return (
     <div className=" flex justify-center items-center  h-[200px]">
       <div className="flex  bg-white px-2 rounded-md w-[90%] md:w-[70%] flex-col ">
@@ -63,13 +70,13 @@ export default function SearchComp() {
                       key={city.slug}
                       className="text-black border-b w-full py-2"
                     >
-                      <Link href={`/weather/${city.slug}`}>
+                      <div onClick={() => handleRoute(city.slug)}>
                         <p>
                           {city.name}
                           {city.state ? `, ${city.state}` : ""}{" "}
                           <span>({city.country})</span>
                         </p>
-                      </Link>
+                      </div>
                     </li>
                   );
                 })

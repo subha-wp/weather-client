@@ -1,8 +1,9 @@
 import React from "react";
+import { CiCloudDrizzle } from "react-icons/ci";
 
 export default function TodayReport() {
   return (
-    <div className="flex justify-between items-center rounded-md bg-gradient-to-r from-indigo-300 to-purple-400 min-w-[450px] py-2 px-4 text-white font-medium">
+    <div className="flex justify-between items-center rounded-md bg-gradient-to-r from-indigo-300 to-purple-400 min-w-[80%] py-2 px-4 text-white font-medium">
       {/* left side */}
       <div className="space-y-2">
         <h3 className="text-2xl font-bold">Kolkata (IN)</h3>
@@ -24,7 +25,9 @@ export default function TodayReport() {
         </div>
       </div>
       {/* Right Side */}
-      <div>Icon</div>
+      <div>
+        <CiCloudDrizzle size={55} />
+      </div>
     </div>
   );
 }
