@@ -1,12 +1,13 @@
 import React from "react";
 import fetch from "node-fetch";
 import Image from "next/image";
-import moment from "moment-timezone";
 import { fetchLocation } from "@/lib/extras";
+import { cookies } from "next/headers";
+import SetCookie from "./SetCookie";
 
-const fetchData = async (latLon) => {
+const fetchData = async (latitude, longitude) => {
   const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${latLon.latitude}&lon=${latLon.longitude}&appid=7b395a56868b4896836a1eaf5862495a&units=metric`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=7b395a56868b4896836a1eaf5862495a&units=metric`
   );
 
   const data = await res.json();
@@ -27,12 +28,16 @@ const fetchData = async (latLon) => {
   };
 };
 
-export default async function CurrentLocation({ fullDetails }) {
-  const latLon = await fetchLocation();
-  const currentLW = await fetchData(latLon);
-  // console.log(currentLW);
+export default async function CurrentLocation({ params, fullDetails }) {
+  const tempLat = cookies().get("lat");
+  const tempLon = cookies().get("lon");
+  const latitude = tempLat === undefined ? "28.61282" : tempLat.value;
+  const longitude = tempLon === undefined ? "77.23114" : tempLon.value;
+  const currentLW = await fetchData(latitude, longitude);
+
   return (
     <div className="flex justify-center items-center w-full">
+      <SetCookie />
       {!fullDetails && (
         <div className="flex items-center">
           <p>{currentLW.city}</p>
