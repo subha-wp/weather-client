@@ -2,18 +2,7 @@ import React from "react";
 import fetch from "node-fetch";
 import Image from "next/image";
 import moment from "moment-timezone";
-
-const fetchLocation = async () => {
-  const res = await fetch("https://ipapi.co/json/");
-  const data = await res.json();
-
-  const { latitude, longitude } = data;
-
-  return {
-    latitude,
-    longitude,
-  };
-};
+import { fetchLocation } from "@/lib/extras";
 
 const fetchData = async (latLon) => {
   const res = await fetch(
