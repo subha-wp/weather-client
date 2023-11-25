@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import SearchComp from "@/components/SearchComp";
+import CurrentLocation from "@/components/CurrentLocation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,9 @@ export default function RootLayout({ children }) {
           }}
         >
           <Nav />
+          <div className="max-w-6xl mx-auto flex justify-center">
+            <CurrentLocation fullDetails={true} />
+          </div>
           <div className="max-w-6xl mx-auto min-h-[250px]">
             <SearchComp />
           </div>

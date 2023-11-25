@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { BsGlobeAmericas } from "react-icons/bs";
+import CurrentLocation from "./CurrentLocation";
 
 export default function Nav() {
   return (
@@ -12,9 +13,9 @@ export default function Nav() {
         </Link>
       </div>
       <div className="flex space-x-2 items-center">
-        <BsGlobeAmericas size={24} />
-        <p className="font-semibold">||</p>
-        <p className=" text-xl">IN</p>
+        <CurrentLocation />
+        <p className="text-[12px] font-semibold">||</p>
+        <BsGlobeAmericas size={20} />
       </div>
     </header>
   );

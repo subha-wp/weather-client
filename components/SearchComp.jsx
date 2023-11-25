@@ -68,7 +68,7 @@ export default function SearchComp() {
                   return (
                     <li
                       key={city.slug}
-                      className="text-black border-b w-full py-2"
+                      className="text-black border-b w-full py-2 cursor-pointer"
                     >
                       <div onClick={() => handleRoute(city.slug)}>
                         <p>
