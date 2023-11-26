@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import SearchComp from "@/components/SearchComp";
 import CurrentLocation from "@/components/CurrentLocation";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
