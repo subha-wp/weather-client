@@ -3,6 +3,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import SearchComp from "@/components/SearchComp";
 import CurrentLocation from "@/components/CurrentLocation";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,9 @@ export default function RootLayout({ children }) {
           </div>
         </div>
         <div>{children}</div>
+        <div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

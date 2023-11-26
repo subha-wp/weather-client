@@ -1,7 +1,7 @@
 import React from "react";
 import fetch from "node-fetch";
 import Image from "next/image";
-import { fetchLocation } from "@/lib/extras";
+
 import { cookies } from "next/headers";
 import SetCookie from "./SetCookie";
 
