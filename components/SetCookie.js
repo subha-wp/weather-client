@@ -5,17 +5,15 @@ import { useRouter } from "next/navigation";
 
 export default function SetCookie() {
   const router = useRouter();
-  const fetchLocation = async () => {
-    const res = await fetch("https://ipapi.co/json/");
-    const data = await res.json();
-
-    const { latitude, longitude } = data;
-    Cookies.set("lat", latitude);
-    Cookies.set("lon", longitude);
-    router.refresh();
-  };
   useEffect(() => {
-    fetchLocation();
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position.coords);
+        Cookies.set("lat", position.coords.latitude);
+        Cookies.set("lon", position.coords.longitude);
+        router.refresh();
+      });
+    }
   }, []);
 
   return;
