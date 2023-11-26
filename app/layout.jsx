@@ -11,14 +11,14 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-GJW3DEZSCS" />
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-QLCRNPYWPB" />
       <Script id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
  
-          gtag('config', 'G-GJW3DEZSCS');
+          gtag('config', 'G-QLCRNPYWPB');
         `}
       </Script>
       <body className={inter.className}>
