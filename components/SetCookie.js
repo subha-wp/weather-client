@@ -16,7 +16,7 @@ export default function SetCookie() {
   };
   useEffect(() => {
     fetchLocation();
-  });
+  }, []);
 
   return;
   null;
