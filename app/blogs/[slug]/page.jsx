@@ -11,13 +11,16 @@ const fetchImage = async (link) => {
 const fetchBlog = async (slug) => {
   console.log(slug);
   const res = await fetch(
-    "https://sever.weather10days.com/wp-json/wp/v2/posts"
+    "https://sever.weather10days.com/wp-json/wp/v2/posts",
+    { cache: "no-store" }
   );
   const data = await res.json();
   const post = data.filter((post, idx) => {
+    console.log("post", post);
     return post.slug === slug;
   });
   const filteredPost = post[0];
+  console.log(filteredPost);
 
   const modifiedTime = filteredPost.modified;
   const title = filteredPost.title.rendered;
@@ -25,7 +28,7 @@ const fetchBlog = async (slug) => {
   const excerpt = filteredPost.excerpt.rendered;
   const imgLink = `https://sever.weather10days.com/wp-json/wp/v2/media/${filteredPost.featured_media}`;
   const img = await fetchImage(imgLink);
-  console.log(img);
+  // console.log(img);
 
   return {
     title,
