@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const fetchImage = async (link) => {
-  const res = await fetch(link);
+  const res = await fetch(link, { cache: "no-store" });
   const data = await res.json();
   return data.source_url;
 };

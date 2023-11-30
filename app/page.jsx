@@ -1,4 +1,5 @@
 import RecentStories from "@/components/RecentStories";
+import TwitterBox from "@/components/TwitterBox";
 
 const title = "Weater 10 Days - Get Live Weather Forecasting ";
 const description =
@@ -22,10 +23,46 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+const fetchBlogs = async () => {
+  const res = await fetch(
+    "https://sever.weather10days.com/wp-json/wp/v2/posts",
+    { cache: "no-store" }
+  );
+  const data = await res.json();
+  const blogPosts = data.filter((post, idx) => {
+    const tempCat = post.categories[0].toString();
+
+    return tempCat === "1";
+  });
+
+  const twitterPosts = data.filter((post, idx) => {
+    const tempCat = post.categories[0].toString();
+
+    return tempCat === "13";
+  });
+
+  // const slug = data.slug;
+  // const modifiedTime = data.modified;
+  // const title = data.title.rendered;
+  // const content = data.content.rendered;
+  // const excerpt = data.excerpt.rendered;
+
+  return {
+    blogPosts,
+    twitterPosts,
+  };
+};
+
+export default async function Home() {
+  const posts = await fetchBlogs();
+
+  const blogs = posts.blogPosts;
+  const twitterPosts = posts.twitterPosts;
+
   return (
     <main className="my-12 mx-auto max-w-6xl px-2">
-      <RecentStories />
+      <TwitterBox posts={twitterPosts} />
+      <RecentStories blogs={blogs} />
     </main>
   );
 }
