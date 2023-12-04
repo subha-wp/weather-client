@@ -1,5 +1,7 @@
 import RecentStories from "@/components/RecentStories";
 import TwitterBox from "@/components/TwitterBox";
+import ExtremeWeather from "@/components/feed/ExtremeWeather";
+import WeatherFeed from "@/components/feed/WeatherFeed";
 
 const title = "Weater 10 Days - Get Live Weather Forecasting ";
 const description =
@@ -60,7 +62,9 @@ export default async function Home() {
   const twitterPosts = posts.twitterPosts;
 
   return (
-    <main className="my-12 mx-auto max-w-6xl px-2">
+    <main className="my-12 mx-auto max-w-6xl px-2 space-y-3">
+      <ExtremeWeather />
+      <WeatherFeed />
       <TwitterBox posts={twitterPosts} />
       <RecentStories blogs={blogs} />
     </main>
