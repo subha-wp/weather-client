@@ -37,7 +37,7 @@ export default async function ExtremeWeather() {
                   width={300}
                   height={168}
                   className="self-center"
-                  alt={`aaj-ka-mausam - ${news.title[0]}`}
+                  alt={`weather 10 days - ${news.title[0]}`}
                 />
                 <small className="absolute text-[9px] p-1 font-semibold text-white bg-red-500 rounded-md top-1 left-1">
                   Extreme Weather
