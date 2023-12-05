@@ -20,7 +20,7 @@ export default async function WeatherFeed() {
     <div>
       <h3>Feed From Fox Weather</h3>
       <div className="flex w-6xl overflow-x-auto space-x-2">
-        {news.map((news, idx) => {
+        {news.slice(0, 10).map((news, idx) => {
           // console.log(news);
           const tempTime = news.pubDate[0];
           const time = getTimeElapsed(tempTime);

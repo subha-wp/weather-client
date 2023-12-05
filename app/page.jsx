@@ -31,11 +31,11 @@ const fetchBlogs = async () => {
     { cache: "no-store" }
   );
   const data = await res.json();
-  const blogPosts = data.filter((post, idx) => {
-    const tempCat = post.categories[0].toString();
+  // const blogPosts = data.filter((post, idx) => {
+  //   const tempCat = post.categories[0].toString();
 
-    return tempCat === "1";
-  });
+  //   return tempCat === "1";
+  // });
 
   const twitterPosts = data.filter((post, idx) => {
     const tempCat = post.categories[0].toString();
@@ -50,7 +50,7 @@ const fetchBlogs = async () => {
   // const excerpt = data.excerpt.rendered;
 
   return {
-    blogPosts,
+    // blogPosts,
     twitterPosts,
   };
 };
@@ -58,7 +58,7 @@ const fetchBlogs = async () => {
 export default async function Home() {
   const posts = await fetchBlogs();
 
-  const blogs = posts.blogPosts;
+  // const blogs = posts.blogPosts;
   const twitterPosts = posts.twitterPosts;
 
   return (
@@ -66,7 +66,7 @@ export default async function Home() {
       <ExtremeWeather />
       <WeatherFeed />
       <TwitterBox posts={twitterPosts} />
-      <RecentStories blogs={blogs} />
+      {/* <RecentStories blogs={blogs} /> */}
     </main>
   );
 }
